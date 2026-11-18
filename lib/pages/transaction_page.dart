@@ -1,0 +1,170 @@
+import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:pas_flutter/controller/transaction_controller.dart';
+
+class TransactionPage extends StatelessWidget {
+  TransactionPage({super.key});
+
+  final controller = Get.put(TransactionController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+       backgroundColor: const Color.fromARGB(255, 174, 163, 163), 
+      appBar: AppBar(
+        title: Text(controller.nama),
+        backgroundColor: const Color.fromARGB(255, 255, 158, 60),
+        foregroundColor: Colors.black,
+        elevation: 0.5,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(         
+          children: [
+            // img
+            Container(
+              width: double.infinity,
+              height: 250,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),              
+                child: controller.imageUrl.isNotEmpty
+                    ? Image.network(
+                        controller.imageUrl,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          color: Colors.grey[300],
+                          child: const Icon(Icons.broken_image, size: 50, color: Colors.grey),
+                        ),                      
+                      )
+                    : const Icon(Icons.image, size: 80, color: Colors.grey),
+              
+            ),
+            const SizedBox(height: 12),
+
+            // atas(nama harga)
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 255, 228, 223),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(             
+                children: [
+                  Text(
+                    controller.nama,
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Rp ${controller.harga}",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+
+            // stiore & rating
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 234, 221, 221),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+             
+            ),
+            const SizedBox(height: 12),
+
+            // des
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 139, 132, 132),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Deskripsi Produk:",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    controller.deskripsi.isNotEmpty ? controller.deskripsi : "Tidak ada deskripsi produk.",
+                    style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 16, 16, 16), height: 1.4),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+
+            TextField(
+              controller: controller.jumlahController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Quantity',
+                border: OutlineInputBorder(),
+              ),
+            ),
+                ElevatedButton(
+                onPressed: () {
+                  // controller.addItem(
+                   
+                    
+                  //   int.tryParse(controller.jumlahController.text) 
+                  // );
+
+                  // double hitung = controller.harga *  
+
+                 
+                },
+                child: Text('Tambah ke Cart'),
+                ),
+
+              
+          
+          ],
+        ),
+      ),
+    );
+  }
+}
