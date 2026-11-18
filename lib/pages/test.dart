@@ -9,6 +9,8 @@ class Testing extends StatelessWidget {
       appBar : AppBar(
        title : const  Text("hai ini test page"),
       ),// app bar
+
+      // tes git
       body: Column(),
     );
   }
