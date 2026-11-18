@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              "Nikmati Musik.\nGratis di Spotify.",
+              "Login Page.\nMasukkan username dan password.",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,

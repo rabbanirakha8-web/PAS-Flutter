@@ -12,8 +12,7 @@ class FeatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Daftar Team')),
-      body: Obx(() {
-      
+      body: Obx(() { 
         
         return ListView.builder(
           itemCount: controller.teamList.length,
